@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benvenuto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 100px;
+            background-color: #fff;
+            max-width: 400px;
+            margin: 100px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Per posizionare il logo */
+        }
+        .logo {
+            width: 150px; /* Dimensioni del logo */
+            position: absolute;
+            top: -10px; /* Posizione rispetto al top della .container */
+            left: 50%; /* Posizione rispetto al centro della .container */
+            transform: translateX(-50%); /* Centra orizzontalmente */
+        }
+        h1 {
+            margin-bottom: 40px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .btn-register {
+            background-color: #c1a37f;
+            color: white;
+        }
+        .btn-register:hover {
+            background-color: #797b55;
+        }
+        .btn-login {
+            background-color: #008CBA;
+            color: white;
+        }
+        .btn-login:hover {
+            background-color: #1a4a57;
+        }
+        .guest-link {
+            display: block;
+            margin-top: 20px;
+            color: #473c38;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .guest-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="Logo del sito" class="logo">
+        <h1>Benvenuto</h1>
+        <button class="btn-register" onclick="location.href='registrazione.html'">Registrati</button>
+        <button class="btn-login" onclick="location.href='login.html'">Accedi</button>
+        <a class="guest-link" href="home.html">Continua come ospite</a>
+    </div>
+</body>
+</html>

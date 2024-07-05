@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .filters {
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .filters input,
+        .filters select {
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .filters button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .annunci {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .annuncio {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 10px);
+        }
+        .annuncio h2 {
+            color: #4CAF50;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel .prev,
+        .carousel .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .carousel .prev {
+            left: 10px;
+        }
+        .carousel .next {
+            right: 10px;
+        }
+        .annuncio-dettagli p {
+            margin: 5px 0;
+        }
+    </style>
+    <script>
+        function changeSlide(button, direction) {
+            const carousel = button.closest('.carousel');
+            const images = carousel.querySelectorAll('img');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Annunci</h2>
+        <div class="filters">
+            <select id="citta">
+                <option value="">Seleziona Città</option>
+                <option value="milano">Milano</option>
+                <option value="roma">Roma</option>
+                <option value="pavia">Pavia</option>
+            </select>
+            <select id="zona">
+                <option value="">Seleziona Zona</option>
+                <option value="navigli">Navigli</option>
+                <option value="brera">Brera</option>
+                <option value="centro storico">Centro Storico</option>
+                <option value="borgo ticino">Borgo Ticino</option>
+            </select>
+            <input type="number" id="prezzo-min" placeholder="Prezzo Min">
+            <input type="number" id="prezzo-max" placeholder="Prezzo Max">
+            <input type="number" id="superficie-min" placeholder="Superficie Min (mq)">
+            <input type="number" id="superficie-max" placeholder="Superficie Max (mq)">
+            <input type="number" id="locali-min" placeholder="Locali Min">
+            <input type="number" id="locali-max" placeholder="Locali Max">
+            <input type="number" id="bagni-min" placeholder="Bagni Min">
+            <input type="number" id="bagni-max" placeholder="Bagni Max">
+            <input type="number" id="piano-min" placeholder="Piano Min">
+            <input type="number" id="piano-max" placeholder="Piano Max">
+            <button id="filtra">Filtra</button>
+        </div>
+        <div class="annunci">
+            <div class="annuncio" data-city="milano" data-zone="navigli" data-price="1500" data-size="80" data-rooms="3" data-bathrooms="2" data-floor="3">
+                <h2>Titolo 1</h2>
+                <p>Descrizione 1</p>
+                <p>Data pubblicazione: 2024-06-20</p>
+                <div class="carousel">
+                    <img src="img1_1.jpg" alt="Immagine 1" class="active">
+                    <img src="img1_2.jpg" alt="Immagine 2">
+                    <img src="img1_3.jpg" alt="Immagine 3">
+                    <img src="img1_4.jpg" alt="Immagine 4">
+                    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="annuncio-dettagli">
+                    <p>Prezzo: 1500 €/mese</p>
+                    <p>Spese condominiali: 100 €/mese</p>
+                    <p>Cauzione: 3000 €</p>
+                    <p>Data disponibilità: 2024-07-01</p>
+                    <p>Indirizzo: Via Navigli, Milano</p>
+                    <p>Superficie: 80 mq</p>
+                    <p>Locali: 3</p>
+                    <p>Bagni: 2</p>
+                    <p>Piano: 3</p>
+                    <p>Altre caratteristiche: Balcone, Ascensore</p>
+                    <p>Classe energetica: A</p>
+                    <p>Pubblicato da: Privato</p>
+                </div>
+            </div>
+            <div class="annuncio" data-city="milano" data-zone="brera" data-price="2000" data-size="100" data-rooms="4" data-bathrooms="2" data-floor="2">
+                <h2>Titolo 2</h2>
+                <p>Descrizione 2</p>
+                <p>Data pubblicazione: 2024-06-19</p>
+                <div class="carousel">
+                    <img src="img2_1.jpg" alt="Immagine 1" class="active">
+                    <img src="img2_2.jpg" alt="Immagine 2">
+                    <img src="img2_3.jpg" alt="Immagine 3">
+                    <img src="img2_4.jpg" alt="Immagine 4">
+                    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="annuncio-dettagli">
+                    <p>Prezzo: 2000 €/mese</p>
+                    <p>Spese condominiali: 150 €/mese</p>
+                    <p>Cauzione: 4000 €</p>
+                    <p>Data disponibilità: 2024-08-01</p>
+                    <p>Indirizzo: Via Brera, Milano</p>
+                    <p>Superficie: 100 mq</p>
+                    <p>Locali: 4</p>
+                    <p>Bagni: 2</p>
+                    <p>Piano: 2</p>
+                    <p>Altre caratteristiche: Balcone, Garage</p>
+                    <p>Classe energetica: B</p>
+                    <p>Pubblicato da: Agenzia</p>
+                </div>
+            </div>
+            <div class="annuncio" data-city="pavia" data-zone="centro storico" data-price="1200" data-size="70" data-rooms="3" data-bathrooms="1" data-floor="1">
+                <h2>Titolo 3</h2>
+                <p>Descrizione 3</p>
+                <p>Data pubblicazione:<p>Data pubblicazione: 2024-06-18</p>
+                <div class="carousel">
+                    <img src="img3_1.jpg" alt="Immagine 1" class="active">
+                    <img src="img3_2.jpg" alt="Immagine 2">
+                    <img src="img3_3.jpg" alt="Immagine 3">
+                    <img src="img3_4.jpg" alt="Immagine 4">
+                    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="annuncio-dettagli">
+                    <p>Prezzo: 1200 €/mese</p>
+                    <p>Spese condominiali: 50 €/mese</p>
+                    <p>Cauzione: 2400 €</p>
+                    <p>Data disponibilità: 2024-07-15</p>
+                    <p>Indirizzo: Via Centro Storico, Pavia</p>
+                    <p>Superficie: 70 mq</p>
+                    <p>Locali: 3</p>
+                    <p>Bagni: 1</p>
+                    <p>Piano: 1</p>
+                    <p>Altre caratteristiche: Arredato, Balcone</p>
+                    <p>Classe energetica: C</p>
+                    <p>Pubblicato da: Privato</p>
+                </div>
+            </div>
+            <div class="annuncio" data-city="roma" data-zone="centro storico" data-price="2500" data-size="120" data-rooms="5" data-bathrooms="3" data-floor="4">
+                <h2>Titolo 4</h2>
+                <p>Descrizione 4</p>
+                <p>Data pubblicazione: 2024-06-17</p>
+                <div class="carousel">
+                    <img src="img4_1.jpg" alt="Immagine 1" class="active">
+                    <img src="img4_2.jpg" alt="Immagine 2">
+                    <img src="img4_3.jpg" alt="Immagine 3">
+                    <img src="img4_4.jpg" alt="Immagine 4">
+                    <button class="prev" onclick="changeSlide(this, -1)">&#10094;</button>
+                    <button class="next" onclick="changeSlide(this, 1)">&#10095;</button>
+                </div>
+                <div class="annuncio-dettagli">
+                    <p>Prezzo: 2500 €/mese</p>
+                    <p>Spese condominiali: 200 €/mese</p>
+                    <p>Cauzione: 5000 €</p>
+                    <p>Data disponibilità: 2024-09-01</p>
+                    <p>Indirizzo: Via del Centro Storico, Roma</p>
+                    <p>Superficie: 120 mq</p>
+                    <p>Locali: 5</p>
+                    <p>Bagni: 3</p>
+                    <p>Piano: 4</p>
+                    <p>Altre caratteristiche: Terrazzo, Ascensore</p>
+                    <p>Classe energetica: A+</p>
+                    <p>Pubblicato da: Agenzia</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group-inline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .form-group-inline label {
+            margin-bottom: 0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .form-section {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleForm() {
+            const userType = document.querySelector('input[name="user-type"]:checked').value;
+            const privatoForm = document.getElementById('privato-form');
+            const agenteForm = document.getElementById('agente-form');
+            
+            if (userType === 'privato') {
+                privatoForm.style.display = 'block';
+                agenteForm.style.display = 'none';
+            } else if (userType === 'agente') {
+                privatoForm.style.display = 'none';
+                agenteForm.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrazione</h2>
+        <div class="form-group-inline">
+            <label>
+                <input type="radio" name="user-type" value="privato" onclick="toggleForm()"> Utente Privato
+            </label>
+            <label>
+                <input type="radio" name="user-type" value="agente" onclick="toggleForm()"> Agente Immobiliare
+            </label>
+        </div>
+
+        <form id="privato-form" class="form-section">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" name="cognome" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="text" id="telefono" name="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Registrati</button>
+        </form>
+
+        <form id="agente-form" class="form-section">
+            <div class="form-group">
+                <label for="nome-agente">Nome</label>
+                <input type="text" id="nome-agente" name="nome-agente" required>
+            </div>
+            <div class="form-group">
+                <label for="cognome-agente">Cognome</label>
+                <input type="text" id="cognome-agente" name="cognome-agente" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo-azienda">Tipo Azienda</label>
+                <select id="tipo-azienda" name="tipo-azienda" required>
+                    <option value="agenzia">Agenzia Immobiliare</option>
+                    <option value="impresa">Impresa Edile</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nome-azienda">Nome Azienda</label>
+                <input type="text" id="nome-azienda" name="nome-azienda" required>
+            </div>
+            <div class="form-group">
+                <label for="indirizzo">Indirizzo</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+            </div>
+            <div class="form-group">
+                <label for="partita-iva">Partita IVA</label>
+                <input type="text" id="partita-iva" name="partita-iva" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono-agente">Telefono</label>
+                <input type="text" id="telefono-agente" name="telefono-agente" required>
+            </div>
+            <div class="form-group">
+                <label for="email-agente">Email</label>
+                <input type="email" id="email-agente" name="email-agente" required>
+            </div>
+            <div class="form-group">
+                <label for="password-agente">Password</label>
+                <input type="password" id="password-agente" name="password-agente" required>
+            </div>
+            <button type="submit">Registrati</button>
+        </form>
+    </div>
+</body>
+</html>
+

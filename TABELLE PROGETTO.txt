@@ -1,0 +1,97 @@
+CREATE DATABASE IF NOT EXISTS ProjectWork;
+USE ProjectWork;
+
+CREATE TABLE UTENTE (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL,
+    nome VARCHAR(50) ,
+    cognome VARCHAR(50) ,
+    telefono VARCHAR(15) 
+);
+
+CREATE TABLE AZIENDA (
+    ID_azienda INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    tipologia ENUM('Impresa Edile', 'Agenzia Immobiliare'),
+    indirizzo VARCHAR(255),
+
+	ID_citta INT,
+	FOREIGN KEY (ID_citta) REFERENCES CITTA(ID_citta)
+
+);
+
+CREATE TABLE AGENTE (
+    ID_azienda INT NOT NULL,
+    ID_utente INT NOT NULL,
+    Partita_Iva VARCHAR(20),
+    PRIMARY KEY (ID_azienda, ID_utente),
+    FOREIGN KEY (ID_azienda) REFERENCES AZIENDA(ID_azienda),
+    FOREIGN KEY (ID_utente) REFERENCES UTENTE(ID)
+);
+
+CREATE TABLE CITTA (
+    ID_citta INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    provincia VARCHAR(50),
+    stato VARCHAR(50)
+);
+
+CREATE TABLE ZONA (
+    ID_zona INT AUTO_INCREMENT PRIMARY KEY,
+    ID_citta INT NOT NULL,
+    nome_zona VARCHAR(100),
+    FOREIGN KEY (ID_citta) REFERENCES CITTA(ID_citta)
+);
+
+CREATE TABLE VIE  (
+     Via VARCHAR(200),
+	ID_zona INT,
+FOREIGN KEY (ID_zona) REFERENCES ZONA(ID_zona)
+);
+
+CREATE TABLE TIPOLOGIA (
+ID_tipologia INT NOT NULL AUTO_INCREMENT,
+descrizione VARCHAR(50)
+);
+
+CREATE TABLE AFFITTI (
+    ID_camera INT AUTO_INCREMENT PRIMARY KEY,
+    ID_zona INT NOT NULL,
+    ID_tipologia INT NOT NULL,
+    prezzo DECIMAL(10, 2),
+    spese_condominiali DECIMAL(10, 2),
+    cauzione DECIMAL(10, 2),
+    data_disponibilita DATE,
+    indirizzo VARCHAR(255),
+    superficie DECIMAL(10, 2),
+    locali INT,
+    bagni INT,
+    piano INT,
+    altre_caratteristiche TEXT,
+    classe_energetica VARCHAR(50),
+    FOREIGN KEY (ID_citta) REFERENCES CITTA(ID_citta),
+    FOREIGN KEY (ID_zona) REFERENCES ZONA(ID_zona),
+FOREIGN KEY (ID_tipologia) REFERENCES TIPOLOGIA(ID_tipologia)
+
+);
+
+CREATE TABLE ANNUNCIO (
+    ID_annuncio INT AUTO_INCREMENT PRIMARY KEY,
+    ID_utente INT NOT NULL,
+    ID_casa INT NOT NULL,
+    titolo VARCHAR(100),
+    descrizione TEXT,
+    data_pubblicazione DATE,
+    immagine VARCHAR(255),
+    FOREIGN KEY (ID_utente) REFERENCES UTENTE(ID),
+    FOREIGN KEY (ID_casa) REFERENCES AFFITTI(ID_camera)
+);
+
+CREATE TABLE PREFERENZE (
+    ID_utente INT NOT NULL,
+    ID_annuncio INT NOT NULL,
+    PRIMARY KEY (ID_utente, ID_annuncio),
+    FOREIGN KEY (ID_utente) REFERENCES UTENTE(ID),
+    FOREIGN KEY (ID_annuncio) REFERENCES ANNUNCIO(ID_annuncio)
+);

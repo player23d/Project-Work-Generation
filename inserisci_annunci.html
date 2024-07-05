@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserisci Annuncio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        h1::before,
+        h1::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            background-position: center;
+        }
+        h1::before {
+            left: -60px;
+            background-image: url('img/logo_sinistra.png'); /* Percorso del logo sinistro */
+        }
+        h1::after {
+            right: -60px;
+            background-image: url('img/logo_destra.png'); /* Percorso del logo destro */
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .form-group {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group input[type="date"],
+        .form-group input[type="number"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Inserisci il tuo annuncio</h1>
+        <form action="http://localhost:3000/api/annunci" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titolo">Titolo:</label>
+                <input type="text" id="titolo" name="titolo" required>
+            </div>
+            <div class="form-group">
+                <label for="descrizione">Descrizione:</label>
+                <textarea id="descrizione" name="descrizione" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="data_pubblicazione">Data di pubblicazione:</label>
+                <input type="date" id="data_pubblicazione" name="data_pubblicazione" required>
+            </div>
+            <div class="form-group">
+                <label for="prezzo">Prezzo:</label>
+                <input type="number" id="prezzo" name="prezzo" required>
+                <span>€/mese</span>
+            </div>
+            <div class="form-group">
+                <label for="spese_condominiali">Spese condominiali:</label>
+                <input type="number" id="spese_condominiali" name="spese_condominiali" required>
+                <span>€/mese</span>
+            </div>
+            <div class="form-group">
+                <label for="cauzione">Cauzione:</label>
+                <input type="number" id="cauzione" name="cauzione" required>
+                <span>€</span>
+            </div>
+            <div class="form-group">
+                <label for="data_disponibilita">Data di disponibilità:</label>
+                <input type="date" id="data_disponibilita" name="data_disponibilita" required>
+            </div>
+            <div class="form-group">
+                <label for="indirizzo">Indirizzo:</label>
+                <input type="text" id="indirizzo" name="indirizzo" required>
+            </div>
+            <div class="form-group">
+                <label for="superficie">Superficie:</label>
+                <input type="number" id="superficie" name="superficie" required>
+                <span>mq</span>
+            </div>
+            <div class="form-group">
+                <label for="locali">Locali:</label>
+                <input type="number" id="locali" name="locali" required>
+            </div>
+            <div class="form-group">
+                <label for="bagni">Bagni:</label>
+                <input type="number" id="bagni" name="bagni" required>
+            </div>
+            <div class="form-group">
+                <label for="immagini">Immagini:</label>
+                <input type="file" id="immagini" name="immagini" accept="image/*" multiple>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Carica Annuncio">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

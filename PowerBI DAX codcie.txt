@@ -1,0 +1,78 @@
+Misure e Colonne Calcolate per Agenzia
+1. Numero di annunci pubblicati da ciascuna agenzia
+NumeroAnnunciPubblicati = 
+CALCULATE(
+    COUNTROWS(annuncio),
+    RELATEDTABLE(agente)
+)
+
+2. Numero di affitti gestiti da ciascuna agenzia
+
+NumeroAffittiGestiti = 
+CALCULATE(
+    COUNTROWS(affitti),
+    RELATEDTABLE(agente)
+)
+
+3. Prezzo medio degli affitti gestiti da ciascuna agenzia
+
+PrezzoMedioAffitti = 
+CALCULATE(
+    AVERAGE(affitti[prezzo]),
+    RELATEDTABLE(agente)
+)
+
+4. Superficie media degli affitti gestiti da ciascuna agenzia
+
+SuperficieMediaAffitti = 
+CALCULATE(
+    AVERAGE(affitti[superficie]),
+    RELATEDTABLE(agente)
+)
+5. Numero di preferenze per gli annunci di ciascuna agenzia
+NumeroPreferenze = 
+CALCULATE(
+    COUNTROWS(preferenze),
+    RELATEDTABLE(annuncio),
+    RELATEDTABLE(agente)
+)
+
+6. Numero di utenti associati a ciascuna agenzia
+
+NumeroUtentiAssociati = 
+CALCULATE(
+    COUNTROWS(agente),
+    RELATEDTABLE(utente)
+)
+
+7. Descrizione delle tipologie di affitti gestiti da ciascuna agenzia
+
+TipologieAffittiGestiti = 
+CONCATENATEX(
+    VALUES(affitti[idtipologia]),
+    RELATED(tipologia[descrizione]),
+    ", "
+)
+
+Visualizzazione 1: Tabella riepilogativa per ogni agenzia
+Questa tabella potrebbe includere:
+
+Nome dell'agenzia
+Numero di annunci pubblicati
+Numero di affitti gestiti
+Prezzo medio degli affitti
+Superficie media degli affitti
+Numero di preferenze per gli annunci
+Numero di utenti associati
+Tipologie di affitti gestiti
+
+Visualizzazione 2: Grafico a barre del numero di annunci pubblicati per agenzia
+Crea un grafico a barre che mostri il numero di annunci pubblicati per ciascuna agenzia.
+
+Visualizzazione 3: Grafico a torta della distribuzione delle tipologie di affitti per agenzia
+Crea un grafico a torta che mostri la distribuzione delle tipologie di affitti gestiti da ciascuna agenzia.
+
+Visualizzazione 4: Grafico a linee del prezzo medio degli affitti per agenzia nel tempo
+Crea un grafico a linee che mostri come il prezzo medio degli affitti gestiti da ciascuna agenzia varia nel tempo.
+
+Queste visualizzazioni permetteranno di avere una panoramica dettagliata e utile delle attività di ogni agenzia immobiliare. Ricordati di importare correttamente le tabelle nel modello di Power BI e di creare le relazioni appropriate tra di esse.

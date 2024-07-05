@@ -1,0 +1,89 @@
+Immobiliare .it
+
+
+Si vuole ricreare il database di un sito web per 
+annunci immobiliari (affitti) in stile immobiliare.it
+
+Creare lo schema ER (documentando il progetto)
+Lo schema deve comprendere oltre agli annunci anche 
+gli utenti (con le loro liste di annunci preferiti)
+gli inserzionisti con i loro dati
+le case/camere in affitto
+
+Inserire alcuni dati di immobiliare.it anche per le successive analisi.
+Concentrarsi prevalentemente su Milano (e per confronti i dati di Pavia).
+Inserire 100 risultati tra i più economici
+(dividere il lavoro di acquisizione dati tra studenti)
+Creare le query che poi verranno utilizzate dal sito per 
+visualizzare gli annunci (con i filtri, le zone etc.)
+
+Le immagini sul sito sono registrate come link alle immagini
+di immobiliare sul database (usare 1 immagine tra quelle
+nelle slideshow)
+
+-------
+
+Realizzare lo stesso database in versione MongoDB
+
+e le query relative a MongoDB
+
+
+-------
+
+Creare i rest endpoint con FastAPI per estrarre i dati dal database
+partendo dalla versione MongoDB
+
+---------
+
+Testing delle REST API prodotte (con pytest)
+
+-------
+
+Il cliente vuole analizzare (con Power BI) i suoi dati.
+
+Ha notato che molto annunci sono fake.
+Ci sono vari tipi di fake:
+- annunci di servizi di relocation (Affitto Privato ad esempio)
+  che sono quasi statici e servono per convogliare il traffico
+  e vendere informazioni ai nostri clienti (liste di annunci privati)
+- truffe.
+  Di solito hanno foto con migliori interni, posizione più centrale
+  nella città e costi sotto mercato. Inoltre chi fa l'annuncio 
+  dichiara di essere all'estero dopo il primo contatto, ed opera 
+  su più città (offrendo affitti) potenzialmente utilizzando gli 
+  stessi contatti
+  (potreste dover contattare l'inserzionista per form o email per 
+  capirlo)
+  Prendere in considerazione almeno 2 città: Milano, Pavia
+
+Potenzialmente il cliente potrebbe applicare varie politiche per 
+guadagnare di più dai primi (che forse gli rubano anche traffico
+facendo sparire gli annunci veri) o eliminarli del tutto.
+Quale sarebbe la più conveniente? (dipende dal traffico di annunci 
+e  dal prezzo che si vuole imporre)
+Come se la cavano gli altri siti di affitti (primi nelle ricerche google)?
+
+"""
+Alcuni annunci nascondono le spese condominiali nel testo del messaggio
+Questo falsa le ricerche dei nostri clienti finali
+"""
+
+Sarebbe interessante anche analizzare dopo quanto tempo le stesse
+case/camere tornano sul mercato (a distanza di anni) per estrarre
+informazioni sul mercato e le varie zone della città
+
+Sono molto gradite ulteriori analisi che ci permettano di estrarre
+informazioni sul mercato o sui nostri clienti (affittuari/inserzionisti,
+utenti finali (son single, famiglia?, animali domestici?/bambini?s 
+(alcuni annunci li escludono))
+
+
+-------------------------
+Realizzare una versione basic del sito con HTML, CSS collegandola
+al database con le rest api
+
+
+
+
+
+

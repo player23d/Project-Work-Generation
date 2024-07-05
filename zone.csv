@@ -1,0 +1,50 @@
+id_zona,fk_citta,nome_zona
+1,1,"Centro Storico"
+2,1,Brera
+3,1,Navigli
+4,1,"Città Studi"
+5,1,Isola
+6,1,"Corso Como"
+7,1,Loreto
+8,1,Garibaldi
+9,1,Fiera
+10,1,Sempione
+11,1,Bicocca
+12,1,Affori
+13,1,Barona
+14,1,Greco
+15,1,Maggiolina
+16,1,Mecenate
+17,1,Monluè
+18,1,Niguarda
+19,1,"Quarto Oggiaro"
+20,1,"Quinto Romano"
+21,1,Rogoredo
+22,1,Sarpi
+23,1,"Scalo Romana"
+24,1,Stadera
+25,1,Ticinese
+26,1,Turro
+27,1,Vigentino
+28,1,Villapizzone
+29,1,Bovisa
+30,1,Forlanini
+31,1,Portello
+32,1,Giambellino
+33,1,Gratosoglio
+34,1,Ortica
+35,1,"Ponte Lambro"
+36,1,Crescenzago
+37,1,Dergano
+38,1,Gallaratese
+39,1,Chiaravalle
+40,1,Precotto
+41,2,"Centro storico"
+42,2,Stazione
+43,2,"Corso Strada Nuova"
+44,2,"Ponte Coperto"
+45,2,"Borgo Ticino"
+46,2,"Pavia Nord"
+47,2,"San Martino Siccomario"
+48,2,"Zona Sud"
+49,2,"Zona Ovest"
